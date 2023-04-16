@@ -85,7 +85,6 @@ Some of the functionality of these dotfiles depends on formulae installed by `br
 # TODOs
 
 - do we need to setup the path to point to GNU utils?
-- make a linux work
-- make a linux work
-- make a windows work
+- make work on linux
+- make work on windows
 - any issues with .zshrc and .zprofile?
