@@ -72,6 +72,7 @@ brew install python
 brew install node
 brew install deno
 brew install yarn
+brew install pnpm
 brew install direnv
 # not sure we need python yet
 # brew install python@2
