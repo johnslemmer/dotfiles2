@@ -12,7 +12,7 @@ alias sudo='sudo '
 alias week='date +%V'
 
 # Get Homebrew, npm, and their installed packages
-alias update='brew update; brew upgrade; brew cleanup; npm install npm -g; npm update -g; yarn global upgrade'
+alias update='omz update; brew update; brew upgrade; brew cleanup; npm install npm -g; npm update -g; yarn global upgrade'
 
 # Google Chrome
 alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
