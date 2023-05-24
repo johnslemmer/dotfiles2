@@ -144,6 +144,8 @@ mas install 497799835
 brew install graphql-playground
 brew install --cask docker
 brew install beekeeper-studio
+brew install planetscale/tap/pscale
+brew install mysql-client
 
 # westell
 # brew install tunnelblick
