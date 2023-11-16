@@ -175,14 +175,12 @@ brew cleanup
 # asdf install ruby latest
 # asdf global ruby system
 asdf plugin add nodejs
-asdf install nodejs latest:16
-asdf global nodejs latest:16
+asdf install nodejs latest:20
+asdf global nodejs latest:20
+asdf plugin add bun
+asdf install bun latest:1
+asdf global bun latest:1
 
-# YARN GLOBALS
-
-# dev
-yarn global add vercel
-yarn global add expo-cli
 
 # PYTHON MODLES
 
