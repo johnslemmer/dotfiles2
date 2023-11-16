@@ -12,6 +12,7 @@ function doIt() {
 		--exclude "bin" \
 		--exclude ".vscode" \
 		--exclude "install-stuff.sh" \
+		--exclude "diff-dotfiles.sh" \
 		--exclude "sync-dotfiles.sh" \
 		--exclude "setup-mac.sh" \
 		-avh --no-perms . ~;
