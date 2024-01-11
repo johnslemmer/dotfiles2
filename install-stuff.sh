@@ -114,14 +114,14 @@ mas install 1352778147
 # personal
 # brew install spotify
 # brew install handbrake
-brew install --cask transmission
-brew install vlc
+# brew install --cask transmission
+# brew install vlc
 # brew install kindle
 # brew install chrome-remote-desktop-host
-brew install discord
-brew install gimp
-brew install steam
-brew install battle-net
+# brew install discord
+# brew install gimp
+# brew install steam
+# brew install battle-net
 
 # dev: general
 brew install slack
@@ -144,8 +144,8 @@ mas install 497799835
 brew install graphql-playground
 brew install --cask docker
 brew install beekeeper-studio
-brew install planetscale/tap/pscale
-brew install mysql-client
+# brew install planetscale/tap/pscale
+# brew install mysql-client
 
 # westell
 # brew install tunnelblick
@@ -159,7 +159,7 @@ brew install mysql-client
 
 # contracting
 # install harvest
-mas install 506189836
+# mas install 506189836
 # brew install skype
 # brew install skype meetings app
 
@@ -175,6 +175,7 @@ brew cleanup
 # asdf install ruby latest
 # asdf global ruby system
 asdf plugin add nodejs
+asdf install nodejs latest:18
 asdf install nodejs latest:20
 asdf global nodejs latest:20
 asdf plugin add bun
