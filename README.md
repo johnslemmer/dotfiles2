@@ -20,7 +20,7 @@ These dotfiles rely on oh-my-zsh to be present on the system. Install [oh-my-zsh
 You can clone the repository wherever you want. (I like to keep it in `~/Code/dotfiles`, with `~/dotfiles` as a symlink.) The `sync-dotfiles.sh` script will pull in the latest version and copy the files to your home folder.
 
 ```bash
-git clone https://github.com/mathiasbynens/dotfiles.git && cd dotfiles && source sync-dotfiles.sh
+git clone https://github.com/johnslemmer/dotfiles2.git && cd dotfiles && source sync-dotfiles.sh
 ```
 
 To update, `cd` into your local `dotfiles` repository and then:
@@ -74,7 +74,7 @@ When setting up a new Mac, you may want to set some sensible macOS defaults:
 
 ### Install Stuff, a lot of stuff
 
-When setting up a new Mac, you may want to install some common CLI utilities, apps, and more.  For this you will need to install [Homebrew](https://brew.sh). Then run:
+When setting up a new Mac, you may want to install some common CLI utilities, apps, and more. For this you will need to install [Homebrew](https://brew.sh). Then run:
 
 ```bash
 ./install-stuff.sh
@@ -84,7 +84,7 @@ Some of the functionality of the dotfiles synced above depend on formulae instal
 
 # TODOs
 
-- do we need to setup the path to point to GNU utils?
-- make work on linux
-- make work on windows
-- any issues with .zshrc and .zprofile?
+-   do we need to setup the path to point to GNU utils?
+-   make work on linux
+-   make work on windows
+-   any issues with .zshrc and .zprofile?
