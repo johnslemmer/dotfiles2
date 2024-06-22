@@ -78,7 +78,7 @@ brew install direnv
 # brew install python@2
 # brew install pyenv
 # brew install pipenv
-brew install watchman
+# brew install watchman
 # brew install azure-cli
 # brew install postgres
 
@@ -101,7 +101,7 @@ brew install openoffice
 brew install adobe-acrobat-reader
 brew install zoom
 brew install google-drive
-brew install dropbox
+# brew install dropbox
 
 # app store essenatials
 # install mas (the command line mac app store installer)
@@ -126,14 +126,15 @@ brew install battle-net
 # dev: general
 brew install slack
 brew install visual-studio-code
-brew install sourcetree
+# brew install sourcetree
 brew install balenaetcher
-brew install clipy
+# brew install clipy
 brew install kap
-brew install --cask wireshark
-brew install postman
+# brew install --cask wireshark
+# brew install postman
 # install xcode
 mas install 497799835
+sudo xcodebuild -license accept
 
 # dev: apps
 # probably not doing any android mobile development
@@ -141,8 +142,8 @@ mas install 497799835
 # brew install genymotion
 
 # dev: server
-brew install graphql-playground
-brew install --cask docker
+# brew install graphql-playground
+# brew install --cask docker
 brew install beekeeper-studio
 brew install planetscale/tap/pscale
 brew install mysql-client
