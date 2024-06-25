@@ -126,6 +126,7 @@ brew install battle-net
 # dev: general
 brew install slack
 brew install visual-studio-code
+brew install figma
 # brew install sourcetree
 brew install balenaetcher
 # brew install clipy
