@@ -95,6 +95,7 @@ brew install direnv
 sudo softwareupdate --install-rosetta
 
 # essentials
+brew install raycast
 brew install karabiner-elements
 brew install google-chrome
 brew install openoffice
@@ -106,8 +107,6 @@ brew install google-drive
 # app store essenatials
 # install mas (the command line mac app store installer)
 brew install mas
-# install magnet
-mas install 441258766
 # install bitwarden
 mas install 1352778147
 
@@ -127,9 +126,7 @@ brew install battle-net
 brew install slack
 brew install visual-studio-code
 brew install figma
-# brew install sourcetree
 brew install balenaetcher
-# brew install clipy
 brew install kap
 # brew install --cask wireshark
 # brew install postman
@@ -144,7 +141,7 @@ sudo xcodebuild -license accept
 
 # dev: server
 # brew install graphql-playground
-# brew install --cask docker
+brew install --cask docker
 brew install beekeeper-studio
 brew install planetscale/tap/pscale
 brew install mysql-client
