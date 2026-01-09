@@ -8,7 +8,7 @@ export ZSH="$HOME/.oh-my-zsh"
 DISABLE_AUTO_UPDATE=true
 
 # Set the theme
-ZSH_THEME="steeef"
+ZSH_THEME="johnslemmer"
 
 # Use hyphen-insensitive completion.
 HYPHEN_INSENSITIVE="true"
