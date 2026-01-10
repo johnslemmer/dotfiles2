@@ -1,0 +1,2 @@
+theme=light:Builtin Solarized Light,dark:Builtin Solarized Dark
+keybind = shift+enter=text:\x1b\r
