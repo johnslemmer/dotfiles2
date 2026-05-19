@@ -1,193 +1,182 @@
 #!/usr/bin/env bash
 
-# Install command-line tools using Homebrew.
+set -euo pipefail
 
-# Make sure we’re using the latest Homebrew.
+SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+
+###############################################################################
+# Helpers                                                                     #
+###############################################################################
+
+brew_install() {
+    for package in "$@"; do
+        brew list --formula "$package" >/dev/null 2>&1 || brew install "$package"
+    done
+}
+
+brew_cask_install() {
+    for cask in "$@"; do
+        brew list --cask "$cask" >/dev/null 2>&1 || brew install --cask "$cask"
+    done
+}
+
+mas_install() {
+    local app_id="$1"
+    mas list | awk '{ print $1 }' | grep -qx "$app_id" || mas install "$app_id"
+}
+
+asdf_plugin_add() {
+    local plugin="$1"
+    asdf plugin list | grep -qx "$plugin" || asdf plugin add "$plugin"
+}
+
+asdf_install_global() {
+    local plugin="$1"
+    local version="$2"
+
+    asdf install "$plugin" "$version"
+    asdf global "$plugin" "$version"
+}
+
+###############################################################################
+# Homebrew                                                                    #
+###############################################################################
+
 brew update
-
-# Upgrade any already-installed formulae.
 brew upgrade
 
-# Save Homebrew’s installed location.
 BREW_PREFIX=$(brew --prefix)
+export PATH="${BREW_PREFIX}/bin:${PATH}"
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:${PATH}"
 
-# Install GNU core utilities (those that come with macOS are outdated).
-# Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
-brew install coreutils
-# Install some other useful utilities like `sponge`.
-brew install moreutils
-# Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
-brew install findutils
-# Install GNU `sed`, overwriting the built-in `sed`.
-brew install gnu-sed
-# Install a modern version of Bash.
-# brew install bash
-# brew install bash-completion2
+###############################################################################
+# Command-line tools                                                          #
+###############################################################################
 
-# Switch to using brew-installed bash as default shell
-# if ! fgrep -q "${BREW_PREFIX}/bin/bash" /etc/shells; then
-#   echo "${BREW_PREFIX}/bin/bash" | sudo tee -a /etc/shells;
-#   chsh -s "${BREW_PREFIX}/bin/bash";
-# fi;
+brew_install \
+    coreutils \
+    moreutils \
+    findutils \
+    gnu-sed \
+    wget \
+    gnupg \
+    vim \
+    grep \
+    openssh \
+    screen \
+    ack \
+    curl \
+    git \
+    git-lfs \
+    lua \
+    lynx \
+    p7zip \
+    pigz \
+    pv \
+    rename \
+    rlwrap \
+    ssh-copy-id \
+    telnet \
+    tree \
+    vbindiff \
+    zopfli \
+    readline \
+    xz \
+    jq
 
-# Install `wget`
-brew install wget
+brew_install \
+    asdf \
+    python \
+    mysql-client \
+    direnv \
+    awscli \
+    jckuester/tap/awsls \
+    cloc \
+    cocoapods \
+    ffmpeg \
+    gh \
+    glslang \
+    neovim \
+    planetscale/tap/pscale \
+    swift-format \
+    tursodatabase/tap/turso \
+    uv \
+    watchman \
+    yt-dlp
 
-# Install GnuPG to enable PGP-signing commits.
-brew install gnupg
+###############################################################################
+# Applications                                                                #
+###############################################################################
 
-# Install more recent versions of some macOS tools.
-brew install vim
-brew install grep
-brew install openssh
-brew install screen
+# Some apps need Rosetta.
+sudo softwareupdate --install-rosetta --agree-to-license
 
-# Install other useful binaries.
-brew install ack
-#brew install exiv2
-brew install curl
-brew install git
-brew install git-lfs
-# brew install gs
-# brew install imagemagick --with-webp
-brew install lua
-brew install lynx
-brew install p7zip
-brew install pigz
-brew install pv
-brew install rename
-brew install rlwrap
-brew install ssh-copy-id
-brew install telnet
-brew install tree
-brew install vbindiff
-brew install zopfli
-brew install readline
-brew install xz
-brew install jq
+brew_cask_install \
+    raycast \
+    karabiner-elements \
+    google-chrome \
+    adobe-acrobat-reader \
+    zoom \
+    google-drive \
+    transmission \
+    vlc \
+    discord \
+    gimp \
+    steam \
+    battle-net \
+    slack \
+    microsoft-teams \
+    visual-studio-code \
+    figma \
+    balenaetcher \
+    docker-desktop \
+    beekeeper-studio \
+    altair-graphql-client \
+    audacity \
+    claude-code \
+    codex \
+    codex-app \
+    cursor \
+    firefox \
+    ghostty \
+    loom \
+    ngrok \
+    notion \
+    sf-symbols \
+    t3-code \
+    wispr-flow
 
-# Other dev tools
-brew install asdf
-brew install python
-brew install node
-brew install deno
-brew install yarn
-brew install pnpm
-brew install direnv
-# not sure we need python yet
-# brew install python@2
-# brew install pyenv
-# brew install pipenv
-# brew install watchman
-# brew install azure-cli
-# brew install postgres
+###############################################################################
+# Mac App Store                                                               #
+###############################################################################
 
-# DVD ripping
-# can't do illegal things at work
-# brew install libdvdcss
+brew_install mas
 
-# Others???
+mas_install 1352778147 # Bitwarden
+mas_install 497799835  # Xcode
+mas_install 506189836  # Harvest
+mas_install 441258766  # Magnet
 
-
-# APPLICATIONS
-
-# Some apps need rosetta:
-sudo softwareupdate --install-rosetta
-
-# essentials
-brew install raycast
-brew install karabiner-elements
-brew install google-chrome
-brew install openoffice
-brew install adobe-acrobat-reader
-brew install zoom
-brew install google-drive
-# brew install dropbox
-
-# app store essenatials
-# install mas (the command line mac app store installer)
-brew install mas
-# install bitwarden
-mas install 1352778147
-
-# personal
-# brew install spotify
-# brew install handbrake
-brew install --cask transmission
-brew install vlc
-# brew install kindle
-# brew install chrome-remote-desktop-host
-brew install discord
-brew install gimp
-brew install steam
-brew install battle-net
-
-# dev: general
-brew install slack
-brew install visual-studio-code
-brew install figma
-brew install balenaetcher
-brew install kap
-# brew install --cask wireshark
-# brew install postman
-# install xcode
-mas install 497799835
 sudo xcodebuild -license accept
 
-# dev: apps
-# probably not doing any android mobile development
-# brew install android-studio
-# brew install genymotion
+###############################################################################
+# Runtime managers                                                            #
+###############################################################################
 
-# dev: server
-# brew install graphql-playground
-brew install --cask docker
-brew install beekeeper-studio
-brew install planetscale/tap/pscale
-brew install mysql-client
+asdf_plugin_add nodejs
+asdf_install_global nodejs latest:24
+corepack enable
+corepack prepare pnpm@latest --activate
 
-# westell
-# brew install tunnelblick
-# brew install virtualbox
-# brew install perforce
-# brew install p4v
-# brew install mimecast
-# brew install mailraider pro
-# brew install vmware-horizon-client
-# brew install manageengine-mibbrowser
+asdf_plugin_add bun
+asdf_install_global bun latest:1
+bun install -g biome vercel eas-cli
 
-# contracting
-# install harvest
-mas install 506189836
-# brew install skype
-# brew install skype meetings app
+asdf_plugin_add deno
+asdf_install_global deno latest
 
-# Remove outdated versions from the cellar.
+###############################################################################
+# Cleanup                                                                     #
+###############################################################################
+
 brew cleanup
-
-# ASDF SETUP
-
-# asdf plugin add ruby
-# asdf install ruby 2.4.6
-# asdf install ruby 2.6.0
-# asdf install ruby 2.6.6
-# asdf install ruby latest
-# asdf global ruby system
-asdf plugin add nodejs
-asdf install nodejs latest:20
-asdf global nodejs latest:20
-asdf plugin add bun
-asdf install bun latest:1
-asdf global bun latest:1
-
-
-# PYTHON MODLES
-
-# dev
-# not sure we need python yet testing
-# pip2 install --upgrade pip
-# pip2 install --upgrade setuptools
-# pip2 install pylint
-#curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
-#poetry completions bash > $(brew --prefix)/etc/bash_completion.d/poetry.bash-completion
-
